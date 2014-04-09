@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoArgos", "ProjetoArgos\ProjetoArgos.csproj", "{E36654D8-1F80-4284-9D26-1DD46A6D1F73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoArgos.Test", "ProjetoArgos.Test\ProjetoArgos.Test.csproj", "{7977710B-04EE-4B8A-8553-F799AA2E6EC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E36654D8-1F80-4284-9D26-1DD46A6D1F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36654D8-1F80-4284-9D26-1DD46A6D1F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36654D8-1F80-4284-9D26-1DD46A6D1F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E36654D8-1F80-4284-9D26-1DD46A6D1F73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7977710B-04EE-4B8A-8553-F799AA2E6EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7977710B-04EE-4B8A-8553-F799AA2E6EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7977710B-04EE-4B8A-8553-F799AA2E6EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7977710B-04EE-4B8A-8553-F799AA2E6EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
