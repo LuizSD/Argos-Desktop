@@ -14,56 +14,44 @@ namespace ProjetoArgos
 {
     public partial class Form1 : Form
     {
+        private ControleEstado _controle;
+
         public Form1()
         {
             InitializeComponent();
             //Inicializa o Arduino
-            var porta = new SerialPort("COM5", 9600);
-            var controle = new ControleEstado(porta);
-
-            //Verifica os Estados
-            var primeiro = new Dispositivo("1");
-            var estadoPrimeira = controle.VerificaEstado(primeiro);
-
-            var segundo = new Dispositivo("2");
-            var estadoSegunda = controle.VerificaEstado(segundo);
-
-            var terceiro = new Dispositivo("3");
-            var estadoTerceira = controle.VerificaEstado(terceiro);
-
-            Lampada1.Text = estadoPrimeira.ToString();
-            Lampada2.Text = estadoSegunda.ToString();
-            Lampada3.Text = estadoTerceira.ToString(); 
-
-           
 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            _controle = new ControleEstado(new SerialPort("COM5", 9600));
+
+            VerificaEstados();
+        }
+
+        private void VerificaEstados()
+        {
+            //Verifica os Estados
+            var primeiro = new Dispositivo("1");
+            var estadoPrimeira = _controle.VerificaEstado(primeiro);
+
+            var segundo = new Dispositivo("2");
+            var estadoSegunda = _controle.VerificaEstado(segundo);
+
+            var terceiro = new Dispositivo("3");
+            var estadoTerceira = _controle.VerificaEstado(terceiro);
+
+            Lampada1.Text = estadoPrimeira.ToString();
+            Lampada2.Text = estadoSegunda.ToString();
+            Lampada3.Text = estadoTerceira.ToString();    
         }
 
         private void Lampada1_Click(object sender, EventArgs e)
         {
-            var porta = new SerialPort("COM5", 9600);
-            var controle = new ControleEstado(porta);
-
-            var primeiro = new Dispositivo("1");
-            var estadoLampada = controle.VerificaEstado(primeiro);
-
-            if (estadoLampada.ToString() == Lampada1.Text) {
-                var estadoNovo = estadoLampada.Equals(Estado.Ligado) ? Estado.Desligado : Estado.Ligado;
-                var resultado = controle.AtualizarStatus(primeiro, estadoNovo);
-                Lampada1.Text = estadoNovo.ToString();
-            }
-            else
-            {
-                MessageBox.Show("A Lâmpada já está no estado " + estadoLampada);
-                Lampada1.Text = estadoLampada.ToString();
-            }
+            AlterarEstadoLampada("1", Lampada1);
             
-        }
+        }        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -72,43 +60,29 @@ namespace ProjetoArgos
 
         private void Lampada2_Click(object sender, EventArgs e)
         {
-            var porta = new SerialPort("COM5", 9600);
-            var controle = new ControleEstado(porta);
-
-            var segundo = new Dispositivo("2");
-            var estadoLampada = controle.VerificaEstado(segundo);
-
-            if (estadoLampada.ToString() == Lampada1.Text)
-            {
-                var estadoNovo = estadoLampada.Equals(Estado.Ligado) ? Estado.Desligado : Estado.Ligado;
-                var resultado = controle.AtualizarStatus(segundo, estadoNovo);
-                Lampada2.Text = estadoNovo.ToString();
-            }
-            else
-            {
-                MessageBox.Show("A Lâmpada já está no estado " + estadoLampada);
-                Lampada2.Text = estadoLampada.ToString();
-            }
+            AlterarEstadoLampada("2", Lampada2);
         }
 
         private void Lampada3_Click(object sender, EventArgs e)
         {
-            var porta = new SerialPort("COM5", 9600);
-            var controle = new ControleEstado(porta);
+            AlterarEstadoLampada("3", Lampada3);
+        }
 
-            var terceiro = new Dispositivo("3");
-            var estadoLampada = controle.VerificaEstado(terceiro);
+        private void AlterarEstadoLampada(string dispositivo, Button botao)
+        {
+            var primeiro = new Dispositivo(dispositivo);
+            var estadoLampada = _controle.VerificaEstado(primeiro);
 
-            if (estadoLampada.ToString() == Lampada1.Text)
+            if (estadoLampada.ToString() == botao.Text)
             {
                 var estadoNovo = estadoLampada.Equals(Estado.Ligado) ? Estado.Desligado : Estado.Ligado;
-                var resultado = controle.AtualizarStatus(terceiro, estadoNovo);
-                Lampada3.Text = estadoNovo.ToString();
+                var resultado = _controle.AtualizarStatus(primeiro, estadoNovo);
+                botao.Text = estadoNovo.ToString();
             }
             else
             {
-                MessageBox.Show("A Lâmpada já está no estado " + estadoLampada);
-                Lampada3.Text = estadoLampada.ToString();
+                MessageBox.Show("A Lâmpada já está no estado: " + estadoLampada);
+                botao.Text = estadoLampada.ToString();
             }
         }
     }
