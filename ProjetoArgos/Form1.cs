@@ -85,5 +85,10 @@ namespace ProjetoArgos
                 botao.Text = estadoLampada.ToString();
             }
         }
+
+        private void Atualizar_Click(object sender, EventArgs e)
+        {
+            VerificaEstados();
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Lampada2 = new System.Windows.Forms.Button();
             this.Lampada3 = new System.Windows.Forms.Button();
+            this.Atualizar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Lampada1
@@ -94,11 +95,22 @@
             this.Lampada3.UseVisualStyleBackColor = true;
             this.Lampada3.Click += new System.EventHandler(this.Lampada3_Click);
             // 
+            // Atualizar
+            // 
+            this.Atualizar.Location = new System.Drawing.Point(93, 197);
+            this.Atualizar.Name = "Atualizar";
+            this.Atualizar.Size = new System.Drawing.Size(75, 23);
+            this.Atualizar.TabIndex = 6;
+            this.Atualizar.Text = "Atualizar";
+            this.Atualizar.UseVisualStyleBackColor = true;
+            this.Atualizar.Click += new System.EventHandler(this.Atualizar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.Atualizar);
             this.Controls.Add(this.Lampada3);
             this.Controls.Add(this.Lampada2);
             this.Controls.Add(this.label3);
@@ -122,6 +134,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Lampada2;
         private System.Windows.Forms.Button Lampada3;
+        private System.Windows.Forms.Button Atualizar;
     }
 }
 
